@@ -12,17 +12,7 @@ body::-webkit-scrollbar-thumb {
   border: 1px solid whitesmoke;
 }
 .cart::-webkit-scrollbar {
-  width: 10px;
-}
-.cart::-webkit-scrollbar-track {
-  position: relative;
-  z-index: 10000;
-  background: transparent;
-}
-.cart::-webkit-scrollbar-thumb {
-  background-color: #d2d2d2;
-  border-radius: 50px;
-  border: 1px solid whitesmoke;
+  width: 0;
 }
 *::selection {
   color: #fff;
@@ -62,18 +52,27 @@ header h6{
 .item h5, .item span{
 	margin: 15px;
 }
+.item h5{
+	grid-row: 1;
+	grid-column: 2/4;
+}
 .img{
 	background-color: #d2d2d2;
 	border-radius: 10px;
 	grid-row: 1/4;
 	grid-column: 1;
+	transition: .2s;
+}
+.img:hover{
+	transform: rotate3d(10, 10, 10, 20deg);
+	transition: .2s;
 }
 main{
 	padding-top: 40px;
 }
 main span{
 	grid-row: 2;
-	grid-column: 2;
+	grid-column: 2/4;
 }
 .add-in-cart{
 	width: 120px;
@@ -104,6 +103,9 @@ main span{
 	padding: 5px 15px;
 	border: 1px solid #d2d2d2;
 }
+.nav-link,.nav-link:hover, .nav-link:focus{
+	color: #000;
+}
 #search, #search:focus{
 	width: 200px;
 	border: none !important;
@@ -113,6 +115,7 @@ main span{
 	display: flex;
 }
 #filter div:focus-within .dropdown-menu{
+	animation: opacity-1 .3s;
 	display: block;
 }
 .cart{
@@ -128,9 +131,6 @@ main span{
 	width: 350px;
 	border-radius: 10px;
 	box-shadow: 0px 3px 21px 0px rgb(0 0 0 / 20%);
-}
-.cart div:first-child{
-	border-bottom: 1px solid #d2d2d2;
 }
 .cart h4, #cart-close{
 	padding: 10px 20px;
@@ -223,6 +223,12 @@ main span{
 .btn-group .btn:focus{
 	box-shadow: none;
 }
+@media only screen and (min-device-width: 1024px){
+	.item{
+		width: 500px;
+		height: 200px;
+	}
+}
 @media only screen and (max-device-width: 1024px){
 	.item{
 		width: 430px;
@@ -239,6 +245,9 @@ main span{
 	.item{
 		width: 390px;
 		height: 170px;
+	}
+	.item h5{
+		font-size: 16px;
 	}
 	.add-in-cart{
 		margin: 0 20px 20px 0;
@@ -266,15 +275,14 @@ main span{
 		width: 290px;
 		height: 160px;
 	}
+	.item h5{
+		font-size: 16px;
+	}
 	#add-in-cart{
 		margin: 5px;
 		width: 100px;
 		height: 35px;
 		grid-row: 3;
-		grid-column: 2;
-	}
-	main span{
-		grid-row: 2;
 		grid-column: 2;
 	}
 }
@@ -290,9 +298,20 @@ main span{
 		padding: 0;
 		width: 100%;
 	}
+	.item-in-cart{
+		width: 280px;
+	}
 	.item{
 		width: 290px;
 		height: 160px;
+	}
+	.item h5, .item span{
+		width: 100%;
+		font-size: 13px;
+	}
+	.dropdown-menu .dropdown-item{
+		font-size: 13px;
+		padding: 8px;
 	}
 	#add-in-cart{
 		margin: 5px;
@@ -301,8 +320,12 @@ main span{
 		grid-row: 3;
 		grid-column: 2;
 	}
-	main span{
-		grid-row: 2;
-		grid-column: 2;
+}
+@keyframes opacity-1{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
 	}
 }

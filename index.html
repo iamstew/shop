@@ -1,202 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script src="libs/js/jquery-3.4.1.min.js"></script>
-  <script src="libs/js/bootstrap.bundle.min.js"></script>
-  <script src="libs/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="assets/js/main.js"></script>
-  <link rel="stylesheet" href="assets/css/style.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="libs/js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="assets/js/main.js"></script>
+	<link rel="stylesheet" href="assets/css/style.css">
 	<title>Магазин книг</title>
 </head>
+
 <body>
 	<header class="navbar navbar-light p-3 w-100 align-items-center">
 		<a href="#" class="navbar-brand d-flex align-items-center">
 			<svg viewBox="0 0 24 24" width="30" height="30">
-				<path d="M22.922,1.7a2.985,2.985,0,0,0-2.458-.648l-6.18,1.123A3.993,3.993,0,0,0,12,3.461,3.993,3.993,0,0,0,9.716,2.172L3.536,1.049A3,3,0,0,0,0,4V20.834l12,2.183,12-2.183V4A2.992,2.992,0,0,0,22.922,1.7ZM11,20.8,2,19.166V4a1,1,0,0,1,1.179-.983L9.358,4.14A2,2,0,0,1,11,6.108Zm11-1.636L13,20.8V6.108A2,2,0,0,1,14.642,4.14l6.179-1.123A1,1,0,0,1,22,4Z"/>
+				<path
+					d="M22.922,1.7a2.985,2.985,0,0,0-2.458-.648l-6.18,1.123A3.993,3.993,0,0,0,12,3.461,3.993,3.993,0,0,0,9.716,2.172L3.536,1.049A3,3,0,0,0,0,4V20.834l12,2.183,12-2.183V4A2.992,2.992,0,0,0,22.922,1.7ZM11,20.8,2,19.166V4a1,1,0,0,1,1.179-.983L9.358,4.14A2,2,0,0,1,11,6.108Zm11-1.636L13,20.8V6.108A2,2,0,0,1,14.642,4.14l6.179-1.123A1,1,0,0,1,22,4Z" />
 			</svg>
 			<span>Магазин книг</span>
 		</a>
-		<h6>Баланс: 10000 руб.</h6>
+		<h6>Баланс: <span data-balance>-</span> руб.</h6>
 	</header>
-	<main class="container">
-		<div class="row">	
+	<main class="container-fluid">
+		<div class="row">
 			<nav class="nav align-items-center">
-				<form class="d-flex align-items-center">
+				<form class="d-flex align-items-center" method="post">
 					<svg width="25" height="25" viewBox="0 0 38 38">
-            <path fill="#9c9fa6" d="M31 30.111a.878.878 0 0 1-.267.622.88.88 0 0 1-.622.267.718.718 0 0 1-.578-.267l-6.476-6.475a9.728 9.728 0 0 1-6.28 2.298C11.4 26.556 7 22.156 7 16.778S11.4 7 16.778 7c5.377 0 9.777 4.4 9.777 9.778 0 2.363-.85 4.538-2.259 6.233l6.437 6.477c.178.178.267.4.267.623zm-14.222-5.333c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z"/>
-          </svg>
+						<path fill="#9c9fa6"
+							d="M31 30.111a.878.878 0 0 1-.267.622.88.88 0 0 1-.622.267.718.718 0 0 1-.578-.267l-6.476-6.475a9.728 9.728 0 0 1-6.28 2.298C11.4 26.556 7 22.156 7 16.778S11.4 7 16.778 7c5.377 0 9.777 4.4 9.777 9.778 0 2.363-.85 4.538-2.259 6.233l6.437 6.477c.178.178.267.4.267.623zm-14.222-5.333c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8z" />
+					</svg>
 					<input id="search" class="form-control" type="text" placeholder="Введите название книги">
 				</form>
 				<div id="filter">
 					<div>
 						<a href="#" class="nav-link dropdown-toggle d-flex align-items-center">Сортировать</a>
-						<ul id="notify-list" class="dropdown-menu dropdown-menu-end">
-	            <li>
-	            	<a href="#" class="dropdown-item p-3">По возрастанию цены</a>
-	            </li>
-	            <li>
-	            	<a href="#" class="dropdown-item p-3">По уменьшению цены</a>
-	            </li>
-	            <li>
-	            	<a href="#" class="dropdown-item p-3">от А до Я</a>
-	          	</li>
-	          	<li>
-	            	<a href="#" class="dropdown-item p-3">от Я до А</a>
-	          	</li>
-	          </ul>
-        	</div>
+						<ul class="dropdown-menu dropdown-menu-end">
+							<li>
+								<a href="#" class="dropdown-item p-3">По возрастанию цены</a>
+							</li>
+							<li>
+								<a href="#" class="dropdown-item p-3">По убыванию цены</a>
+							</li>
+						</ul>
+					</div>
 					<div>
 						<a href="#" class="nav-link dropdown-toggle d-flex align-items-center">Категория</a>
-						<ul id="notify-list" class="dropdown-menu dropdown-menu-end">
-	            <li>
-	            	<a href="#" class="dropdown-item p-3">Категория 1</a>
-	            </li>
-	            <li>
-	            	<a href="#" class="dropdown-item p-3">Категория 2</a>
-	            </li>
-	            <li>
-	            	<a href="#" class="dropdown-item p-3">Категория 3</a>
-	            </li>
-	          </ul>
+						<ul class="dropdown-menu dropdown-menu-end" data-categories></ul>
 					</div>
 				</div>
 				<a id="cart-toggle">
 					<svg width="35" height="35" viewBox="0 0 24 24">
-						<path d="M19.029 13h2.971l-.266 1h-2.992l.287-1zm.863-3h2.812l.296-1h-2.821l-.287 1zm-.576 2h4.387l.297-1h-4.396l-.288 1zm2.684-9l-.743 2h-1.929l-3.474 12h-11.239l-4.615-11h14.812l-.564 2h-11.24l2.938 7h8.428l3.432-12h4.194zm-14.5 15c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm5.9-7-.9 7c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5z"/>
+						<path
+							d="M19.029 13h2.971l-.266 1h-2.992l.287-1zm.863-3h2.812l.296-1h-2.821l-.287 1zm-.576 2h4.387l.297-1h-4.396l-.288 1zm2.684-9l-.743 2h-1.929l-3.474 12h-11.239l-4.615-11h14.812l-.564 2h-11.24l2.938 7h8.428l3.432-12h4.194zm-14.5 15c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm5.9-7-.9 7c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5z" />
 					</svg>
 				</a>
 			</nav>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
+			<div class="row" data-products> 
+				Товары отсутствуют
 			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
-			<div class="item">
-				<div class="img"></div>
-				<h5>Название</h5>
-				<span>Цена</span>
-				<button class="add-in-cart">В корзину</button>
-			</div>
+			
+			
 		</div>
 		<aside class="cart">
-			<div class="cart-head d-flex align-items-center justify-content-between w-100">
+			<div class="d-flex align-items-center justify-content-between w-100">
 				<h4>Корзина</h4>
 				<a id="cart-close">
 					<svg viewBox="0 0 24 24" width="24" height="24">
 						<g id="_01_align_center" data-name="01 align center">
-							<polygon points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414"/>
+							<polygon
+								points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414" />
 						</g>
 					</svg>
 				</a>
@@ -208,7 +82,25 @@
 					<a class="close">
 						<svg viewBox="0 0 24 24" width="12" height="12">
 							<g id="_01_align_center" data-name="01 align center">
-								<polygon points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414"/>
+								<polygon
+									points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414" />
+							</g>
+						</svg>
+					</a>
+					<div class="btn-group">
+						<button class="btn d-flex align-items-center minus" data-id>-</button>
+						<input class="form-control" type="text">
+						<button class="btn d-flex align-items-center plus" data-id>+</button>
+					</div>
+				</div>
+				<div class="item-in-cart">
+					<h6>Название</h6>
+					<span>Цена</span>
+					<a class="close">
+						<svg viewBox="0 0 24 24" width="12" height="12">
+							<g id="_01_align_center" data-name="01 align center">
+								<polygon
+									points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414" />
 							</g>
 						</svg>
 					</a>
@@ -224,7 +116,8 @@
 					<a class="close">
 						<svg viewBox="0 0 24 24" width="12" height="12">
 							<g id="_01_align_center" data-name="01 align center">
-								<polygon points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414"/>
+								<polygon
+									points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414" />
 							</g>
 						</svg>
 					</a>
@@ -240,7 +133,8 @@
 					<a class="close">
 						<svg viewBox="0 0 24 24" width="12" height="12">
 							<g id="_01_align_center" data-name="01 align center">
-								<polygon points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414"/>
+								<polygon
+									points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414" />
 							</g>
 						</svg>
 					</a>
@@ -256,7 +150,8 @@
 					<a class="close">
 						<svg viewBox="0 0 24 24" width="12" height="12">
 							<g id="_01_align_center" data-name="01 align center">
-								<polygon points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414"/>
+								<polygon
+									points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414" />
 							</g>
 						</svg>
 					</a>
@@ -266,27 +161,10 @@
 						<button class="btn d-flex align-items-center">+</button>
 					</div>
 				</div>
-				<div class="item-in-cart">
-					<h6>Название</h6>
-					<span>Цена</span>
-					<a class="close">
-						<svg viewBox="0 0 24 24" width="12" height="12">
-							<g id="_01_align_center" data-name="01 align center">
-								<polygon points="24 1.414 22.586 0 12 10.586 1.414 0 0 1.414 10.586 12 0 22.586 1.414 24 12 13.414 22.586 24 24 22.586 13.414 12 24 1.414"/>
-							</g>
-						</svg>
-					</a>
-					<div class="btn-group">
-						<button class="btn d-flex align-items-center">-</button>
-						<input class="form-control" type="text">
-						<button class="btn d-flex align-items-center">+</button>
-					</div>
-				</div>
-				
 			</div>
 			<div id="buy-block">
 				<hr>
-				<h5>Баланс: 10000 руб.</h5>
+				<h5>Стоимость: <span data-cost>0</span> руб.</h5>
 				<button id="buy">Купить</button>
 			</div>
 		</aside>
