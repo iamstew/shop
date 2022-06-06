@@ -1,15 +1,32 @@
-let balance = 10200;
 let filters = {};
-let cart = []
+const raw = localStorage.getItem('data')
+const data = JSON.parse(raw)
+
+// Проверяем локальное хранилище на наличие данных
+function checkLocalStorage(){
+	if (localStorage.data == null){
+		const storage = {
+			balance: 10200,
+			cart : []
+		}
+		localStorage.setItem('data', JSON.stringify(storage))
+	}
+}
+
+// Обновляем локальное хранилище 
+function updateLocalStorage(){
+	localStorage.setItem('data', JSON.stringify(data))
+}
 
 // Обновляем баланс отображающийся на сайте
 function updateBalance() {
-	$('[data-balance]').text(balance);
+	$('[data-balance]').text(data.balance);
+	updateLocalStorage()
 }
 
 // Считаем сумму товаров в корзине
 function calcAmount() {
-	let amount = cart.reduce((acc, product) => acc += product.price * product.quantity, 0);
+	let amount = data.cart.reduce((acc, product) => acc += product.price * product.quantity, 0);
 
 	$('[data-amount]').text(amount)
 }
@@ -34,8 +51,6 @@ function clearFilters() {
 
 	getBooks()
 }
-
-
 
 // Получаем список всех категорий и выводим на страницу
 function getCategories() {
@@ -89,12 +104,13 @@ function getBooks() {
 
 // Обновляем содержимое корзины
 function updateCart() {
-	if (cart.length === 0) {
+	if (data.cart.length === 0) {
 		$('[data-cart]').html('Корзина пуста')
 		return
 	}
+	updateLocalStorage()
 	$('[data-cart]').html('');
-	cart.forEach(product => {
+	data.cart.forEach(product => {
 		$('[data-cart]').append(`
 		<div class="item-in-cart">
 			<h6>${product.name}</h6>
@@ -107,15 +123,13 @@ function updateCart() {
 					</g>
 				</svg>
 			</a>
-			<div class="btn-group">
-				<input class="form-control amount" type="number" value="${product.quantity}">
-				<button class="btn d-flex align-items-center minus" onclick="amountMinus()">
-					<svg width="16" height="10" viewBox="0 0 24 24"><path d="M0 10h24v4h-24z"/></svg>
-				</button>
-				<button class="btn d-flex align-items-center plus" onclick="amountPlus()">
-					<svg width="14" height="10" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
-				</button>
-			</div>
+			<span class="amount" type="number">Количество: ${product.quantity}</span>
+			<button class="btn d-flex align-items-center minus" onclick="amountMinus('${product.name}')">
+				<svg width="16" height="10" viewBox="0 0 24 24"><path d="M0 10h24v4h-24z"/></svg>
+			</button>
+			<button class="btn d-flex align-items-center plus" onclick="amountPlus('${product.name}')">
+				<svg width="16" height="10" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
+			</button>
 		</div>
 		`)
 	})
@@ -123,17 +137,16 @@ function updateCart() {
 
 // Добавляем товар в корзину 
 function addCart(name, price) {
-	if (balance < +price) {
+	if (data.balance < +price) {
 		alert('Ошибка. Недостаточно средств')
 		return;
 	}
-
-	let candidate = cart.find((product) => product.name === name);
+	let candidate = data.cart.find((product) => product.name === name);
 
 	if (candidate) {
 		candidate.quantity += 1
 	} else {
-		cart.push({
+		data.cart.push({
 			name, 
 			price: +price,
 			quantity: 1,
@@ -142,22 +155,21 @@ function addCart(name, price) {
 
 	
 
-	balance -= +price
+	data.balance -= +price
 
 	updateBalance()
 	updateCart()
 	calcAmount()
 }
 
-
-//Удаляем товар из корзины
+// Удаляем товар из корзины
 function deleteProductToCart(name) {
-	let candidate = cart.find((product) => product.name === name);
+	let candidate = data.cart.find((product) => product.name === name);
 
 	if (candidate) {
-		balance += candidate.price * candidate.quantity
+		data.balance += candidate.price * candidate.quantity
 
-		cart.splice(cart.findIndex(product => product.name === name), 1)
+		data.cart.splice(data.cart.findIndex(product => product.name === name), 1)
 
 		updateBalance()
 		updateCart()
@@ -168,13 +180,66 @@ function deleteProductToCart(name) {
 	alert('Ошибка. Позиции не существует')
 }
 
+// Увеличиваем количество товаров в корзине
+function amountPlus(name){
+	let candidate = data.cart.find((product) => product.name === name);
+
+	if (data.balance < candidate.price){
+		alert('Ошибка. Недостаточно средств')
+		return;
+	}
+
+	if (candidate){
+		candidate.quantity += 1
+	
+		data.balance -= candidate.price
+		
+		updateBalance()
+		updateCart()
+		calcAmount()
+		return
+	}
+}
+
+// Уменьшаем количество товаров в корзине
+function amountMinus(name){
+	let candidate = data.cart.find((product) => product.name === name);
+	
+	if (candidate){
+		if (candidate.quantity === 1){
+			deleteProductToCart(name)
+		}else{
+			data.balance += candidate.price
+			candidate.quantity -= 1
+		}
+	
+		updateBalance()
+		updateCart()
+		calcAmount()
+		return
+	}
+}
+
+// Покупка товаров
+function buyProducts(){
+	data.cart = [];
+	alert('Покупка прошла успешно');
+	
+	updateBalance()
+	updateCart()
+	calcAmount()
+	return
+}
 
 
 $(document).ready(function () {
-	updateBalance();
+	checkLocalStorage()
 	
-	getCategories();
-	getBooks();
+	updateBalance()
+	
+	updateCart()
+	getCategories()
+	getBooks()
 
 
 	// Поиск книги по наименованию
