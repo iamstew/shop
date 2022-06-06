@@ -10,6 +10,8 @@ function checkLocalStorage(){
 			cart : []
 		}
 		localStorage.setItem('data', JSON.stringify(storage))
+		getBooks()
+		getCategories()
 	}
 }
 
