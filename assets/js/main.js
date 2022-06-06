@@ -45,13 +45,6 @@ function setSorted(sort, sort_type) {
 	getBooks()
 }
 
-// Не используется. Очистить фильтр и вывести все товары
-function clearFilters() {
-	filters = {}
-
-	getBooks()
-}
-
 // Получаем список всех категорий и выводим на страницу
 function getCategories() {
 	$.ajax({
