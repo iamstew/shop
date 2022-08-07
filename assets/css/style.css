@@ -50,13 +50,16 @@ header>div{
 	height: 94px;
 	background: #232324;
 }
-.shopping__bag, .header-logo, .buy__books, .cart__close{
+.header-left__logo{
+	text-shadow: 1px 1px 10px #232324;
+}
+.shopping-bag, .header-left__logo, .buy__books, .cart__close{
 	transition: .1s;
 }
 .cart__close:hover,
 .buy__books:hover,
-.shopping__bag:hover,
-.header-logo:hover{
+.shopping-bag:hover,
+.header-left__logo:hover{
 	transform: scale(1.1);
 	cursor: pointer;
 }
@@ -64,9 +67,9 @@ header>div{
 	background: #fff;
 	width: auto;
 	border-radius: 9px;
-	box-shadow: 1px 1px 7px #fff;
+	box-shadow: 1px 1px 10px #232324;
 }
-.search__books{
+.search{
 	border: none;
 	border-radius: 9px;
 	padding: 10px 20px;
@@ -74,26 +77,26 @@ header>div{
 	width: 300px;
 	transition: width .3s;
 }
-.search__books:focus,
-.search__books:valid{
+.search:focus,
+.search:valid{
 	width: 500px;
 	animation: input__focus__animation .5s;
 	outline: none;
 }
-.search__books:focus ~ .search__button,
-.search__books:valid ~ .search__button{
+.search:focus ~ .search-button,
+.search:valid ~ .search-button{
 	display: block;
 }
-.search__button{
+.search-button{
 	display: none;
 	width: 25px;
 	height: 25px;
 	margin-right: 10px;
 }
-.header-link{
+a{
 	color: #fff;
 }
-.books__amount{
+.items-in-cart{
 	position: absolute;
 	top: 55%;
 	left: 50%;
@@ -112,41 +115,41 @@ header>div{
 	width: 48px;
 	height: 48px;
 	border-radius: 50%;
-	background: #eee;
+	background: #232324;
 	position: fixed;
 	bottom: 20px;
 	left: 20px;
 	z-index: 60;
 }
-.cart__body{
+.cart{
 	position: absolute;
 	display: none;
 	z-index: 100;
 	flex-direction: column;
-	padding: 50px 40px;
+	padding: 30px 40px;
 	width: 100%;
 	background: #fff;
 	right: -100%;
 	transition: right .5s;
 }
-.cart__body.active{
+.cart.active{
 	right: 0;
 }
 .title__block{
+	/*position: sticky;*/
+	/*top: 0px;*/
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	padding-bottom: 30px;
 }
 .cart__header{
 	display: flex;
 	flex-direction: column;
 }
-.underline{
-	margin: 20px 0;
-	height: 1px;
-	background: #d2d2d2;
+.book__cart, .title__block{
+	padding: 20px 0;
+	border-bottom: 2px solid #d2d2d2;
 }
 .book__cart{
 	display: flex;
@@ -183,7 +186,6 @@ header>div{
 	transition: .1s;
 }
 .amount-cost button:active{
-	/*outline: none;*/
 	background: #66ff99;
 	transform: scale(.8);
 }
@@ -200,6 +202,7 @@ header>div{
 	padding: 0 20px;
 }
 .delete__from__cart{
+	margin: 20px 0 0;
 	width: 24px;
 	height: 24px;
 	display: block;
@@ -272,6 +275,21 @@ header>div{
 }
 .filter-link:hover{
 	background: #fff;
+}
+.content{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding: 20px 0;
+}
+.card{
+	margin: 0 50px 0 0;
+}
+.card>img{
+	/*width: 240px;*/
+	/*height: 350px;*/
+	border-radius: 9px;
+	border: 1px solid #232324;
 }
 @keyframes pop-up{
 	0%{

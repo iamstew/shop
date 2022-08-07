@@ -1,6 +1,6 @@
 var x = 0;
-let cart_open = document.querySelector('.shopping__bag');
-let cart_body = document.querySelector('.cart__body');
+let cart_open = document.querySelector('.shopping-bag');
+let cart_body = document.querySelector('.cart');
 let cart_close = document.querySelector('.cart__close');
 
 cart_close.addEventListener('click', function(){
@@ -16,6 +16,7 @@ cart_open.addEventListener('click', function(){
 });
 
 window.addEventListener('scroll', function(){
+	console.log(document.querySelector('.main__wrapper .title__block').getBoundingClientRect())
 	if (window.scrollY >= document.querySelector('.library__image').offsetHeight){
 		document.querySelector('header').style.background = '#232324';
 		document.querySelector('.scrollTop').style.display = 'block';
