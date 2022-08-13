@@ -16,27 +16,28 @@ body{
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
-body::-webkit-scrollbar {
-  width: 7px;              /* ширина scrollbar */
+body::-webkit-scrollbar{
+	width: 7px;
 }
-body::-webkit-scrollbar-track {
-  background: #232324;        /* цвет дорожки */
+body::-webkit-scrollbar-track{
+	background: #232324;
 }
-body::-webkit-scrollbar-thumb {
-  background-color: #fff;    /* цвет плашки */
-  border-radius: 30px;       /* закругления плашки */
-  border: 1px solid #232324;
+body::-webkit-scrollbar-thumb{
+	background-color: #fff;
+	/*border-radius: 30px;*/
+	border: 1px solid #232324;
 }
 header{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	filter: ;
 	min-height: 40px;
 	width: 100%;
-	padding: 20px 40px;
+	padding: 10px 40px;
+	background: #232324;
 	position: fixed;
+	z-index: 100;
 }
 header>div{
 	position: relative;
@@ -45,15 +46,13 @@ header>div{
 	align-items: center;
 	justify-content: space-between;
 }
-.header__bg{
-	width: 100%;
-	height: 94px;
-	background: #232324;
+main{
+	position: relative;
 }
 .header-left__logo{
 	text-shadow: 1px 1px 10px #232324;
 }
-.shopping-bag, .header-left__logo, .buy__books, .cart__close{
+.shopping-bag, .header-left__logo, .buy__books, .cart__close, .add-in-cart{
 	transition: .1s;
 }
 .cart__close:hover,
@@ -80,7 +79,6 @@ header>div{
 .search:focus,
 .search:valid{
 	width: 500px;
-	animation: input__focus__animation .5s;
 	outline: none;
 }
 .search:focus ~ .search-button,
@@ -119,12 +117,13 @@ a{
 	position: fixed;
 	bottom: 20px;
 	left: 20px;
-	z-index: 60;
+	z-index: 150;
 }
 .cart{
+	background: #fff;
 	position: absolute;
 	display: none;
-	z-index: 100;
+	z-index: 1100;
 	flex-direction: column;
 	padding: 30px 40px;
 	width: 100%;
@@ -136,12 +135,13 @@ a{
 	right: 0;
 }
 .title__block{
-	/*position: sticky;*/
-	/*top: 0px;*/
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+}
+.title{
+	font-size: 30px;
 }
 .cart__header{
 	display: flex;
@@ -171,10 +171,13 @@ a{
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 20px 40px;
-	width: calc(100% - 200px);
 }
-.book__description{
+.description{
 	margin: 20px 0;
+	word-wrap: break-word;
+}
+.book__cost{
+	font-size: 18px;
 }
 .amount-cost button{
 	border: none;
@@ -213,14 +216,20 @@ a{
 .delete__from__cart:hover path{
 	fill: #ff0000;
 }
+.cart__main{
+	flex: 1 0 auto;
+	background: #fff;
+	width: 100%;
+}
 .cart__footer{
+	flex: 0 0 auto;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 	margin-top: 30px;
 }
-.buy__books{
+.add-in-cart, .buy__books{
 	width: 160px;
 	padding: 13px 15px;
 	border-radius: 9px;
@@ -231,7 +240,7 @@ a{
 	background: #232324;
 	color: #fff;
 }
-.buy__books:hover{
+.add-in-cart:hover, .buy__books:hover{
 	background: #66ff99;
 }
 .library__image{
@@ -240,7 +249,7 @@ a{
 	height: 100vh;
 }
 .main__wrapper{
-	padding: 50px 40px;
+	padding: 0 40px 20px;
 }
 .filters{
 	width: 300px;
@@ -269,7 +278,7 @@ a{
 	margin: 40px 0 0;
 }
 .filter-link{
-	padding: 20px;
+	padding: 15px;
 	width: 100%;
 	color: #232324;
 }
@@ -280,16 +289,44 @@ a{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: space-around;
 	padding: 20px 0;
 }
 .card{
-	margin: 0 50px 0 0;
+	margin: 0 20px 20px 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 500px;
 }
-.card>img{
-	/*width: 240px;*/
-	/*height: 350px;*/
-	border-radius: 9px;
-	border: 1px solid #232324;
+.card__image{
+	margin: 0 20px 0 0;
+	width: 180px;
+	/*miwidth: 100px;*/
+}
+.card__book{
+	transition: .2s;
+	border: 3px solid #d2d2d2;
+}
+.card .card__book:hover{
+	border: 3px solid #66ff99;
+}
+.card__data{
+	width: 300px;
+	padding: 20px;
+	/*border: 1px solid #d2d2d2;*/
+	border-radius: 0 12px 12px 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.card__footer{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
 }
 @keyframes pop-up{
 	0%{
@@ -311,5 +348,139 @@ a{
 	}
 	20%,40%,60%,80%,100%{
 		transform: rotateZ(-5deg);
+	}
+}
+@media only screen and (max-width: 768px){
+	header{
+		padding: 10px 12px;
+	}
+	.header-left{
+		display: none;
+	}
+	.cart__image{
+		width: 130px;
+		height: 200px;
+	}
+	.content{
+		justify-content: space-between;
+	}
+	.card{
+		width: 45%;
+	}
+	.card h3{
+		font-size: 15px;
+	}
+	.card__image{
+		width: 28%;
+	}
+	.add-in-cart{
+		width: 100px;
+		padding: 3px;
+		font-size: 14px;
+	}
+	.card .book__cost{
+		font-size: 12px;
+	}
+	.card__data{
+		padding-right: 0;
+	}
+	.book__title{
+		padding: 5px 20px;
+	}
+}
+@media only screen and (max-width: 425px){
+	.main__wrapper{
+		padding: 0 20px 0;
+	}
+	.cart{
+		padding: 20px 20px;
+	}
+	.cart__image{
+		width: 90px;
+		height: 130px;
+	}
+	.card__data{
+		padding: 0 0 0 15px;
+	}
+	.card{
+		font-size: 12px;
+		width: 100%;
+		justify-content: space-between;
+	}
+	.card__image{
+		width: 150px;
+	}
+	.title{
+		font-size: 20px;
+	}
+	.filters, .dropdown{
+		font-size: 13px;
+		width: 230px;
+	}
+	.sort__by{
+		padding: 0;
+	}
+	.main__wrapper .title__block{
+		padding: 0;
+	}
+	.search{
+		padding: 7px 20px;
+		width: 250px;
+	}
+	.search:focus,
+	.search:valid{
+		width: 250px;
+	}
+	.search-button{
+		display: block;
+	}
+	.header-center{
+		background: #fff;
+	}
+	.shopping-bag svg{
+		width: 30px;
+		height: 30px;
+	}
+	.items-in-cart{
+		transform: none;
+	}
+	.amount-cost{
+		font-size: 12px;
+	}
+	.cart .book__cost, .cart .book__description{
+		font-size: 13px;
+	}
+	.cart h3{
+		font-size: 16px;
+	}
+	.amount-cost>span{
+		padding: 5px 0 0;
+	}
+	.delete__from__cart{
+		margin: 5px 0 0;
+	}
+	.delete__from__cart svg{
+		/*width: 20px;*/
+		/*height: 20px;*/
+		transform: scale(.8);
+	}
+	.buy__books{
+		padding: 10px 10px;
+		width: 140px;
+	}
+}
+@media only screen and (max-width: 320px){
+	.main__wrapper{
+		padding: 0 10px;
+	}
+	.filters, .dropdown{
+		font-size: 12px;
+		width: auto;
+	}
+	.search{
+		width: 200px;
+	}
+	h3.all__cost{
+		font-size: 14px;
 	}
 }

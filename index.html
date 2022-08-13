@@ -60,7 +60,7 @@
 						 src="assets_image_480px" alt -->
 						<div class="book__title">
 							<span>
-								<h3 class="title">Название книги</h3>
+								<h3>Название книги</h3>
 								<p class="book__description">Описание книги</p>
 							</span>
 							<span class="amount-cost">
@@ -98,7 +98,7 @@
 						 src="assets_image_480px" alt -->
 						<div class="book__title">
 							<span>
-								<h3 class="title">Название книги</h3>
+								<h3>Название книги</h3>
 								<p class="book__description">Описание книги</p>
 							</span>
 							<span class="amount-cost">
@@ -136,7 +136,7 @@
 						 src="assets_image_480px" alt -->
 						<div class="book__title">
 							<span>
-								<h3 class="title">Название книги</h3>
+								<h3>Название книги</h3>
 								<p class="book__description">Описание книги</p>
 							</span>
 							<span class="amount-cost">
@@ -174,7 +174,7 @@
 						 src="assets_image_480px" alt -->
 						<div class="book__title">
 							<span>
-								<h3 class="title">Название книги</h3>
+								<h3>Название книги</h3>
 								<p class="book__description">Описание книги</p>
 							</span>
 							<span class="amount-cost">
@@ -209,8 +209,8 @@
 				<button class="buy__books">Купить</button>
 			</div>
 		</div>
+		<!-- <div class="header__bg"></div> -->
 		<div class="library__image"></div>
-		<div class="header__bg"></div>
 		<div class="main__wrapper">
 			<div class="title__block">
 				<h2 class="title">Каталог</h2>
@@ -227,19 +227,139 @@
 			</div>
 			<div class="content">
 				<div class="card">
-					<img srcset="assets/img/algoritm_tricks-320w.jpg 768w,
-							 assets/img/algoritm_tricks.jpg 1024w"
-							 sizes="(max-width:320px) 490px,
-							 (max-width:480px) 320px,
-							 (max-width:768px) 480px" 
-							 src="assets/img/algoritm_tricks.jpg" alt>
-					<!-- <div class="card__data"></div> -->
+					<div class="card__image">
+						<img class="card__book" 
+								 srcset="assets/img/algoritm_tricks.jpg 768w,
+								 assets/img/algoritm_tricks.jpg 320w"
+								 sizes="(max-width:320px) 100px,
+								 (max-width:480px) 130px,
+								 (max-width:768px) 180px,
+								 (min-width:769px) 250px" 
+								 src="assets/img/algoritm_tricks.jpg">
+					</div>
+					<div class="card__data">
+						<div class="card__header">
+							<h3>Алгоритмические трюки для программистов</h3>
+							<p class="description">Описание</p>
+						</div>
+						<div class="card__footer">
+							<span class="book__cost">3500 <i>руб.</i></span>
+							<button class="add-in-cart">В корзину</button>
+						</div>
+					</div>
 				</div>
-				
+				<div class="card">
+					<div class="card__image">
+						<img class="card__book" 
+								 srcset="assets/img/functional_programming_js.jpg 768w,
+								 assets/img/functional_programming_js.jpg 1024w"
+								 sizes="(max-width:320px) 70px,
+								 (max-width:480px) 90px,
+								 (max-width:768px) 130px,
+								 (min-width:769px) 180px" 
+								 src="assets/img/functional_programming_js.jpg">
+					</div>
+					<div class="card__data">
+						<div class="card__header">
+							<h3>Функциональное программирование JS</h3>
+							<p class="description">Описание</p>
+						</div>
+						<div class="card__footer">
+							<span class="book__cost">2000 <i>руб.</i></span>
+							<button class="add-in-cart">В корзину</button>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card__image">
+						<img class="card__book" 
+								 srcset="assets/img/interface.jpg 768w,
+								 assets/img/interface.jpg 1024w"
+								 sizes="(max-width:320px) 70px,
+								 (max-width:480px) 100px,
+								 (max-width:768px) 130px,
+								 (min-width:769px) 180px" 
+								 src="assets/img/interface.jpg">
+					</div>
+					<div class="card__data">
+						<div class="card__header">
+							<h3>Функциональное программирование JS</h3>
+							<p class="description">Описание</p>
+						</div>
+						<div class="card__footer">
+							<span class="book__cost">2000 <i>руб.</i></span>
+							<button class="add-in-cart">В корзину</button>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card__image">
+						<img class="card__book" 
+								 srcset="assets/img/machine_learning.jpg 768w,
+								 assets/img/machine_learning.jpg 1024w"
+								 sizes="(max-width:320px) 70px,
+								 (max-width:480px) 100px,
+								 (max-width:768px) 130px,
+								 (min-width:769px) 180px" 
+								 src="assets/img/machine_learning.jpg">
+					</div>
+					<div class="card__data">
+						<div class="card__header">
+							<h3>Машинное обучение</h3>
+							<p class="description">Описание</p>
+						</div>
+						<div class="card__footer">
+							<span class="book__cost">4700 <i>руб.</i></span>
+							<button class="add-in-cart">В корзину</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</main>
-	<footer></footer>
+	<!-- <footer>
+		<h1>говно</h1>
+		<h1>залупа</h1>
+		<h1>пенис</h1>
+		<h1>хер</h1>
+		<h1>давалка</h1>
+		<h1>хуй</h1>
+		<h1>блядина</h1>
+		<h1>головка</h1>
+		<h1>шлюха</h1>
+		<h1>жопа</h1>
+		<h1>член</h1>
+		<h1>еблан</h1>
+		<h1>петух</h1>
+		<h1>мудила</h1>
+		<h1>рукоблуд</h1>
+		<h1>ссанина</h1>
+		<h1>очко</h1>
+		<h1>блядун</h1>
+		<h1>вагина</h1>
+		<h1>сука</h1>
+		<h1>ебланище</h1>
+		<h1>влагалище</h1>
+		<h1>пердун</h1>
+		<h1>дрочила</h1>
+		<h1>пидор</h1>
+		<h1>пизда</h1>
+		<h1>туз</h1>
+		<h1>малафья</h1>
+		<h1>гомик</h1>
+		<h1>мудила</h1>
+		<h1>пилотка</h1>
+		<h1>манда</h1>
+		<h1>анус</h1>
+		<h1>вагина</h1>
+		<h1>путана</h1>
+		<h1>педрила</h1>
+		<h1>шалава</h1>
+		<h1>хуила</h1>
+		<h1>мошонка</h1>
+		<h1>елда</h1>
+		<h1>РАУНД!</h1>
+	</footer> -->
 	<script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 </html>
