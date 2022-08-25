@@ -24,7 +24,6 @@ body::-webkit-scrollbar-track{
 }
 body::-webkit-scrollbar-thumb{
 	background-color: #fff;
-	/*border-radius: 30px;*/
 	border: 1px solid #232324;
 }
 header{
@@ -32,10 +31,9 @@ header{
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	min-height: 40px;
 	width: 100%;
 	padding: 10px 40px;
-	background: #232324;
+	background:linear-gradient(47deg, #121213 0%, #232324 50%);
 	position: fixed;
 	z-index: 100;
 }
@@ -50,15 +48,13 @@ main{
 	position: relative;
 }
 .header-left__logo{
+	color: #eee;
 	text-shadow: 1px 1px 10px #232324;
 }
-.shopping-bag, .header-left__logo, .buy__books, .cart__close, .add-in-cart{
+a, button, .shopping-bag, .header-left__logo, .buy__books, .cart__close, .add-in-cart{
 	transition: .1s;
 }
-.cart__close:hover,
-.buy__books:hover,
-.shopping-bag:hover,
-.header-left__logo:hover{
+a:hover, button:hover{
 	transform: scale(1.1);
 	cursor: pointer;
 }
@@ -75,6 +71,7 @@ main{
 	font-size: 16px;
 	width: 300px;
 	transition: width .3s;
+	color: #121213;
 }
 .search:focus,
 .search:valid{
@@ -91,21 +88,23 @@ main{
 	height: 25px;
 	margin-right: 10px;
 }
-a{
-	color: #fff;
-}
 .items-in-cart{
 	position: absolute;
-	top: 55%;
+	top: 57%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	text-align: center;
-	background: #fff;
-	border-radius: 10px;
+	border-radius: 20px;
 	min-width: 18px;
 	height: 18px;
+	font-size: 14px;
+	background: #fff;
 	color: #232324;
-	font-size: 13px;
+	transition: .2s;
+}
+.shopping-bag:hover .items-in-cart{
+	color: #232324;
+	background: #fff;
 }
 .scrollTop{
 	padding: 12px;
@@ -121,18 +120,26 @@ a{
 }
 .cart{
 	background: #fff;
-	position: absolute;
+	position: fixed;
 	display: none;
 	z-index: 1100;
+	width: 80%;
+	left: -100%;
+	box-shadow: 1px 10px 200px #121213;
+	transition: left .5s;
 	flex-direction: column;
+	height: 100%;
 	padding: 30px 40px;
-	width: 100%;
-	background: #fff;
-	right: -100%;
-	transition: right .5s;
+	overflow-y: scroll;
+}
+.cart::-webkit-scrollbar{
+	width: 7px;
+}
+.cart::-webkit-scrollbar-thumb{
+	background-color: #d2d2d2;
 }
 .cart.active{
-	right: 0;
+	left: 0;
 }
 .title__block{
 	display: flex;
@@ -179,6 +186,10 @@ a{
 .book__cost{
 	font-size: 18px;
 }
+.amount-cost{
+	display: flex;
+	flex-direction: column;
+}
 .amount-cost button{
 	border: none;
 	width: 24px;
@@ -222,12 +233,12 @@ a{
 	width: 100%;
 }
 .cart__footer{
-	flex: 0 0 auto;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
 	margin-top: 30px;
+	flex: 0 0 auto;
 }
 .add-in-cart, .buy__books{
 	width: 160px;
@@ -302,7 +313,6 @@ a{
 .card__image{
 	margin: 0 20px 0 0;
 	width: 180px;
-	/*miwidth: 100px;*/
 }
 .card__book{
 	transition: .2s;
@@ -320,13 +330,26 @@ a{
 	flex-direction: column;
 	justify-content: space-between;
 }
-
 .card__footer{
 	width: 100%;
 	display: flex;
 	align-items: center;
 	flex-direction: row;
 	justify-content: space-between;
+}
+footer{
+	color: #eee;
+	background: linear-gradient(47deg,#121213 0%,#232324 50%);
+	width: 100%;
+	padding: 10px 40px;
+	display: flex;
+	justify-content: space-evenly;
+}
+footer a{
+	color: #eee;
+}
+footer a:hover{
+	color: #66ff99;
 }
 @keyframes pop-up{
 	0%{
@@ -356,6 +379,9 @@ a{
 	}
 	.header-left{
 		display: none;
+	}
+	.cart{
+		width: 100%;
 	}
 	.cart__image{
 		width: 130px;
@@ -443,6 +469,11 @@ a{
 	}
 	.items-in-cart{
 		transform: none;
+		font-size: 13px;
+		width: 18px;
+		color: #fff;
+		background: #ff4321;
+		height: 18px;
 	}
 	.amount-cost{
 		font-size: 12px;
@@ -460,8 +491,6 @@ a{
 		margin: 5px 0 0;
 	}
 	.delete__from__cart svg{
-		/*width: 20px;*/
-		/*height: 20px;*/
 		transform: scale(.8);
 	}
 	.buy__books{
@@ -470,6 +499,12 @@ a{
 	}
 }
 @media only screen and (max-width: 320px){
+	.cart h3{
+		font-size: 15px;
+	}
+	.book__title{
+		padding: 5px 10px;
+	}
 	.main__wrapper{
 		padding: 0 10px;
 	}
@@ -478,6 +513,10 @@ a{
 		width: auto;
 	}
 	.search{
+		width: 200px;
+	}
+	.search:focus,
+	.search:valid{
 		width: 200px;
 	}
 	h3.all__cost{

@@ -10,10 +10,10 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 	<title>Магазин книг</title>
 </head>
-<body>
+<body itemscope itemtype="http://schema.org/Organization">
 	<header>
 		<div class="header-left">
-			<a class="header-left__logo" href="#"><h1>Магазин книг</h1>
+			<a class="header-left__logo" href="#" itemprop="name"><h1>Магазин книг</h1>
 			</a>
 		</div>
 		<div class="header-center">
@@ -25,7 +25,7 @@
 			</a>
 		</div>
 		<div class="header-right">
-			<a href="#" class="shopping-bag" title="Корзина">
+			<a class="shopping-bag" title="Корзина" onclick="cartToggle()">
 				<span class="items-in-cart">4</span>
 				<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
 					<path fill="#fff" d="M16 6v-2c0-2.209-1.791-4-4-4s-4 1.791-4 4v2h-5v18h18v-18h-5zm-7-2c0-1.654 1.346-3 3-3s3 1.346 3 3v2h-6v-2zm10 18h-14v-14h3v1.5c0 .276.224.5.5.5s.5-.224.5-.5v-1.5h6v1.5c0 .276.224.5.5.5s.5-.224.5-.5v-1.5h3v14z"/>
@@ -43,14 +43,14 @@
 			<div class="cart__header">
 				<div class="title__block">
 					<h2 class="title">Корзина</h2>
-					<a href="#" class="cart__close">
+					<a class="cart__close" onclick="cartToggle()">
 						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
 							<path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/>
 						</svg>
 					</a>
 				</div>
 			</div>
-			<div class="cart__main">
+			<div class="cart__main" data-cart>
 				<div class="book__cart">
 					<div class="cart__data">
 						<img class="cart__image"
@@ -60,134 +60,18 @@
 						 src="assets_image_480px" alt -->
 						<div class="book__title">
 							<span>
-								<h3>Название книги</h3>
-								<p class="book__description">Описание книги</p>
+								<h3 itemprop="name">Название книги</h3>
+								<p itemprop="description" class="book__description">Описание книги</p>
 							</span>
 							<span class="amount-cost">
-								<h4 class="book__cost">1000 <i>руб.</i></h4>
+								<span class="book__cost">1000 <i>руб.</i></span>
 								<span>
 									<button class="amount__minus">
 										<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
 											<path fill="#fff" d="M0 10h24v4h-24z"/>
 										</svg>
 									</button>
-									<h4 class="amount__in__cart">
-										3
-									</h4>
-									<button class="amount__plus">
-										<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
-											<path fill="#fff" d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
-										</svg>
-									</button>
-								</span>
-							</span>
-						</div>
-					</div>
-					<a href="#" class="delete__from__cart">
-						<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-							<path fill="#232324" d="M19 24h-14c-1.104 0-2-.896-2-2v-16h18v16c0 1.104-.896 2-2 2m-9-14c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6-5h-20v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2zm-12-2h4v-1h-4v1z"/>
-						</svg>
-					</a>
-				</div>
-				<div class="book__cart">
-					<div class="cart__data">
-						<img class="cart__image"
-						 >
-						 <!-- srcset="assets_image_320px 320px,
-						 assets_image_480px"
-						 src="assets_image_480px" alt -->
-						<div class="book__title">
-							<span>
-								<h3>Название книги</h3>
-								<p class="book__description">Описание книги</p>
-							</span>
-							<span class="amount-cost">
-								<h4 class="book__cost">1000 <i>руб.</i></h4>
-								<span>
-									<button class="amount__minus">
-										<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
-											<path fill="#fff" d="M0 10h24v4h-24z"/>
-										</svg>
-									</button>
-									<h4 class="amount__in__cart">
-										3
-									</h4>
-									<button class="amount__plus">
-										<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
-											<path fill="#fff" d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
-										</svg>
-									</button>
-								</span>
-							</span>
-						</div>
-					</div>
-					<a href="#" class="delete__from__cart">
-						<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-							<path fill="#232324" d="M19 24h-14c-1.104 0-2-.896-2-2v-16h18v16c0 1.104-.896 2-2 2m-9-14c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6-5h-20v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2zm-12-2h4v-1h-4v1z"/>
-						</svg>
-					</a>
-				</div>
-				<div class="book__cart">
-					<div class="cart__data">
-						<img class="cart__image"
-						 >
-						 <!-- srcset="assets_image_320px 320px,
-						 assets_image_480px"
-						 src="assets_image_480px" alt -->
-						<div class="book__title">
-							<span>
-								<h3>Название книги</h3>
-								<p class="book__description">Описание книги</p>
-							</span>
-							<span class="amount-cost">
-								<h4 class="book__cost">1000 <i>руб.</i></h4>
-								<span>
-									<button class="amount__minus">
-										<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
-											<path fill="#fff" d="M0 10h24v4h-24z"/>
-										</svg>
-									</button>
-									<h4 class="amount__in__cart">
-										3
-									</h4>
-									<button class="amount__plus">
-										<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
-											<path fill="#fff" d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
-										</svg>
-									</button>
-								</span>
-							</span>
-						</div>
-					</div>
-					<a href="#" class="delete__from__cart">
-						<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-							<path fill="#232324" d="M19 24h-14c-1.104 0-2-.896-2-2v-16h18v16c0 1.104-.896 2-2 2m-9-14c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6-5h-20v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2zm-12-2h4v-1h-4v1z"/>
-						</svg>
-					</a>
-				</div>
-				<div class="book__cart">
-					<div class="cart__data">
-						<img class="cart__image"
-						 >
-						 <!-- srcset="assets_image_320px 320px,
-						 assets_image_480px"
-						 src="assets_image_480px" alt -->
-						<div class="book__title">
-							<span>
-								<h3>Название книги</h3>
-								<p class="book__description">Описание книги</p>
-							</span>
-							<span class="amount-cost">
-								<h4 class="book__cost">1000 <i>руб.</i></h4>
-								<span>
-									<button class="amount__minus">
-										<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
-											<path fill="#fff" d="M0 10h24v4h-24z"/>
-										</svg>
-									</button>
-									<h4 class="amount__in__cart">
-										3
-									</h4>
+									<span class="amount__in__cart">3</span>
 									<button class="amount__plus">
 										<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
 											<path fill="#fff" d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
@@ -209,7 +93,6 @@
 				<button class="buy__books">Купить</button>
 			</div>
 		</div>
-		<!-- <div class="header__bg"></div> -->
 		<div class="library__image"></div>
 		<div class="main__wrapper">
 			<div class="title__block">
@@ -230,43 +113,43 @@
 					<div class="card__image">
 						<img class="card__book" 
 								 srcset="assets/img/algoritm_tricks.jpg 768w,
-								 assets/img/algoritm_tricks.jpg 320w"
-								 sizes="(max-width:320px) 100px,
-								 (max-width:480px) 130px,
-								 (max-width:768px) 180px,
-								 (min-width:769px) 250px" 
+								 assets/img/algoritm_tricks.jpg 1024w"
+								 sizes="(max-width:320px) 70px,
+								 (max-width:480px) 100px,
+								 (max-width:768px) 130px,
+								 (min-width:769px) 180px"
 								 src="assets/img/algoritm_tricks.jpg">
 					</div>
 					<div class="card__data">
 						<div class="card__header">
-							<h3>Алгоритмические трюки для программистов</h3>
-							<p class="description">Описание</p>
+							<h3 itemprop="name" data-name>Алгоритмические трюки для программистов</h3>
+							<p itemprop="description" class="description" data-descrip>Описание</p>
 						</div>
 						<div class="card__footer">
-							<span class="book__cost">3500 <i>руб.</i></span>
-							<button class="add-in-cart">В корзину</button>
+							<span class="book__cost" data-price>3500 <i>руб.</i></span>
+							<button class="add-in-cart" data-id="1">В корзину</button>
 						</div>
 					</div>
 				</div>
 				<div class="card">
 					<div class="card__image">
-						<img class="card__book" 
+						<img class="card__book"
 								 srcset="assets/img/functional_programming_js.jpg 768w,
 								 assets/img/functional_programming_js.jpg 1024w"
 								 sizes="(max-width:320px) 70px,
-								 (max-width:480px) 90px,
+								 (max-width:480px) 100px,
 								 (max-width:768px) 130px,
-								 (min-width:769px) 180px" 
+								 (min-width:769px) 180px"
 								 src="assets/img/functional_programming_js.jpg">
 					</div>
 					<div class="card__data">
 						<div class="card__header">
-							<h3>Функциональное программирование JS</h3>
-							<p class="description">Описание</p>
+							<h3 itemprop="name" data-name>Функциональное программирование JS</h3>
+							<p itemprop="description" class="description" data-descrip>Описание</p>
 						</div>
 						<div class="card__footer">
-							<span class="book__cost">2000 <i>руб.</i></span>
-							<button class="add-in-cart">В корзину</button>
+							<span class="book__cost" data-price>2000 <i>руб.</i></span>
+							<button class="add-in-cart" data-id="2">В корзину</button>
 						</div>
 					</div>
 				</div>
@@ -278,17 +161,17 @@
 								 sizes="(max-width:320px) 70px,
 								 (max-width:480px) 100px,
 								 (max-width:768px) 130px,
-								 (min-width:769px) 180px" 
+								 (min-width:769px) 180px"
 								 src="assets/img/interface.jpg">
 					</div>
 					<div class="card__data">
 						<div class="card__header">
-							<h3>Функциональное программирование JS</h3>
-							<p class="description">Описание</p>
+							<h3 itemprop="name" data-name>Функциональное программирование JS</h3>
+							<p itemprop="description" class="description" data-descrip>Описание</p>
 						</div>
 						<div class="card__footer">
-							<span class="book__cost">2000 <i>руб.</i></span>
-							<button class="add-in-cart">В корзину</button>
+							<span class="book__cost" data-price>2000 <i>руб.</i></span>
+							<button class="add-in-cart" data-id="3">В корзину</button>
 						</div>
 					</div>
 				</div>
@@ -300,66 +183,27 @@
 								 sizes="(max-width:320px) 70px,
 								 (max-width:480px) 100px,
 								 (max-width:768px) 130px,
-								 (min-width:769px) 180px" 
+								 (min-width:769px) 180px"
 								 src="assets/img/machine_learning.jpg">
 					</div>
 					<div class="card__data">
 						<div class="card__header">
-							<h3>Машинное обучение</h3>
-							<p class="description">Описание</p>
+							<h3 itemprop="name" data-name>Машинное обучение</h3>
+							<p itemprop="description" class="description" data-descrip>Описание</p>
 						</div>
 						<div class="card__footer">
-							<span class="book__cost">4700 <i>руб.</i></span>
-							<button class="add-in-cart">В корзину</button>
+							<span class="book__cost" data price>4700 <i>руб.</i></span>
+							<button class="add-in-cart" data-id="4">В корзину</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</main>
-	<!-- <footer>
-		<h1>говно</h1>
-		<h1>залупа</h1>
-		<h1>пенис</h1>
-		<h1>хер</h1>
-		<h1>давалка</h1>
-		<h1>хуй</h1>
-		<h1>блядина</h1>
-		<h1>головка</h1>
-		<h1>шлюха</h1>
-		<h1>жопа</h1>
-		<h1>член</h1>
-		<h1>еблан</h1>
-		<h1>петух</h1>
-		<h1>мудила</h1>
-		<h1>рукоблуд</h1>
-		<h1>ссанина</h1>
-		<h1>очко</h1>
-		<h1>блядун</h1>
-		<h1>вагина</h1>
-		<h1>сука</h1>
-		<h1>ебланище</h1>
-		<h1>влагалище</h1>
-		<h1>пердун</h1>
-		<h1>дрочила</h1>
-		<h1>пидор</h1>
-		<h1>пизда</h1>
-		<h1>туз</h1>
-		<h1>малафья</h1>
-		<h1>гомик</h1>
-		<h1>мудила</h1>
-		<h1>пилотка</h1>
-		<h1>манда</h1>
-		<h1>анус</h1>
-		<h1>вагина</h1>
-		<h1>путана</h1>
-		<h1>педрила</h1>
-		<h1>шалава</h1>
-		<h1>хуила</h1>
-		<h1>мошонка</h1>
-		<h1>елда</h1>
-		<h1>РАУНД!</h1>
-	</footer> -->
+	<footer>
+		<span itemprop="adress">Улица Есенина, дом 47</span>
+		<a href="email:books_shop@mail.ru" itemprop="email">books_shop@mail.ru</a>
+	</footer>
 	<script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 </html>
