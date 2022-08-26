@@ -50,46 +50,9 @@
 					</a>
 				</div>
 			</div>
-			<div class="cart__main" data-cart>
-				<div class="book__cart">
-					<div class="cart__data">
-						<img class="cart__image"
-						 >
-						 <!-- srcset="assets_image_320px 320px,
-						 assets_image_480px"
-						 src="assets_image_480px" alt -->
-						<div class="book__title">
-							<span>
-								<h3 itemprop="name">Название книги</h3>
-								<p itemprop="description" class="book__description">Описание книги</p>
-							</span>
-							<span class="amount-cost">
-								<span class="book__cost">1000 <i>руб.</i></span>
-								<span>
-									<button class="amount__minus">
-										<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
-											<path fill="#fff" d="M0 10h24v4h-24z"/>
-										</svg>
-									</button>
-									<span class="amount__in__cart">3</span>
-									<button class="amount__plus">
-										<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
-											<path fill="#fff" d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/>
-										</svg>
-									</button>
-								</span>
-							</span>
-						</div>
-					</div>
-					<a href="#" class="delete__from__cart">
-						<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-							<path fill="#232324" d="M19 24h-14c-1.104 0-2-.896-2-2v-16h18v16c0 1.104-.896 2-2 2m-9-14c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6 0c0-.552-.448-1-1-1s-1 .448-1 1v9c0 .552.448 1 1 1s1-.448 1-1v-9zm6-5h-20v-2h6v-1.5c0-.827.673-1.5 1.5-1.5h5c.825 0 1.5.671 1.5 1.5v1.5h6v2zm-12-2h4v-1h-4v1z"/>
-						</svg>
-					</a>
-				</div>
-			</div>
+			<div class="cart__main" data-cart></div>
 			<div class="cart__footer">
-				<h3 class="all__cost">Итого: 4150 <i>руб.</i></h3>
+				<h3 class="all__cost">Итого: <span data-cost></span> <i>руб.</i></h3>
 				<button class="buy__books">Купить</button>
 			</div>
 		</div>
@@ -111,7 +74,8 @@
 			<div class="content">
 				<div class="card">
 					<div class="card__image">
-						<img class="card__book" 
+						<img data-id="1"
+								class="card__book" 
 								 srcset="assets/img/algoritm_tricks.jpg 768w,
 								 assets/img/algoritm_tricks.jpg 1024w"
 								 sizes="(max-width:320px) 70px,
@@ -122,18 +86,19 @@
 					</div>
 					<div class="card__data">
 						<div class="card__header">
-							<h3 itemprop="name" data-name>Алгоритмические трюки для программистов</h3>
-							<p itemprop="description" class="description" data-descrip>Описание</p>
+							<h3 class="card__name" itemprop="name" data-id="1">Алгоритмические трюки для программистов</h3>
+							<p itemprop="description" class="description" data-id="1">Описание</p>
 						</div>
 						<div class="card__footer">
-							<span class="book__cost" data-price>3500 <i>руб.</i></span>
+							<span><span class="book__cost" data-id="1">3500</span><i> руб.</i></span>
 							<button class="add-in-cart" data-id="1">В корзину</button>
 						</div>
 					</div>
 				</div>
 				<div class="card">
 					<div class="card__image">
-						<img class="card__book"
+						<img data-id="2"
+								class="card__book"
 								 srcset="assets/img/functional_programming_js.jpg 768w,
 								 assets/img/functional_programming_js.jpg 1024w"
 								 sizes="(max-width:320px) 70px,
@@ -144,18 +109,19 @@
 					</div>
 					<div class="card__data">
 						<div class="card__header">
-							<h3 itemprop="name" data-name>Функциональное программирование JS</h3>
-							<p itemprop="description" class="description" data-descrip>Описание</p>
+							<h3 class="card__name" itemprop="name" data-id="2">Функциональное программирование JS</h3>
+							<p itemprop="description" class="description" data-id="2">Описание</p>
 						</div>
 						<div class="card__footer">
-							<span class="book__cost" data-price>2000 <i>руб.</i></span>
+							<span><span class="book__cost" data-id="2">2000</span><i> руб.</i></span>
 							<button class="add-in-cart" data-id="2">В корзину</button>
 						</div>
 					</div>
 				</div>
 				<div class="card">
 					<div class="card__image">
-						<img class="card__book" 
+						<img data-id="3"
+								class="card__book" 
 								 srcset="assets/img/interface.jpg 768w,
 								 assets/img/interface.jpg 1024w"
 								 sizes="(max-width:320px) 70px,
@@ -166,18 +132,19 @@
 					</div>
 					<div class="card__data">
 						<div class="card__header">
-							<h3 itemprop="name" data-name>Функциональное программирование JS</h3>
-							<p itemprop="description" class="description" data-descrip>Описание</p>
+							<h3 class="card__name" itemprop="name" data-id="3">Функциональное программирование JS</h3>
+							<p itemprop="description" class="description" data-id="3">Описание</p>
 						</div>
 						<div class="card__footer">
-							<span class="book__cost" data-price>2000 <i>руб.</i></span>
+							<span><span class="book__cost" data-id="3">2000</span><i> руб.</i></span>
 							<button class="add-in-cart" data-id="3">В корзину</button>
 						</div>
 					</div>
 				</div>
 				<div class="card">
 					<div class="card__image">
-						<img class="card__book" 
+						<img data-id="4"
+								class="card__book" 
 								 srcset="assets/img/machine_learning.jpg 768w,
 								 assets/img/machine_learning.jpg 1024w"
 								 sizes="(max-width:320px) 70px,
@@ -188,11 +155,11 @@
 					</div>
 					<div class="card__data">
 						<div class="card__header">
-							<h3 itemprop="name" data-name>Машинное обучение</h3>
-							<p itemprop="description" class="description" data-descrip>Описание</p>
+							<h3 class="card__name" itemprop="name" data-id='4'>Машинное обучение</h3>
+							<p itemprop="description" class="description" data-id="4">Описание</p>
 						</div>
 						<div class="card__footer">
-							<span class="book__cost" data price>4700 <i>руб.</i></span>
+							<span><span class="book__cost" data-id="4">4700</span><i> руб.</i></span>
 							<button class="add-in-cart" data-id="4">В корзину</button>
 						</div>
 					</div>

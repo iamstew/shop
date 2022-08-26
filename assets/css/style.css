@@ -107,6 +107,7 @@ a:hover, button:hover{
 	background: #fff;
 }
 .scrollTop{
+	border: 1px solid #fff;
 	padding: 12px;
 	display: none;
 	width: 48px;
@@ -184,6 +185,7 @@ a:hover, button:hover{
 	word-wrap: break-word;
 }
 .book__cost{
+	margin-bottom: 7px;
 	font-size: 18px;
 }
 .amount-cost{
@@ -300,19 +302,17 @@ a:hover, button:hover{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: space-between;
 	padding: 20px 0;
 }
 .card{
 	margin: 0 20px 20px 0;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-	width: 500px;
 }
 .card__image{
-	margin: 0 20px 0 0;
-	width: 180px;
+	margin-right: 10px;
+	max-width: 180px;
 }
 .card__book{
 	transition: .2s;
@@ -322,10 +322,8 @@ a:hover, button:hover{
 	border: 3px solid #66ff99;
 }
 .card__data{
-	width: 300px;
-	padding: 20px;
-	/*border: 1px solid #d2d2d2;*/
-	border-radius: 0 12px 12px 0;
+	max-width: 260px;
+	padding: 0 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -333,8 +331,7 @@ a:hover, button:hover{
 .card__footer{
 	width: 100%;
 	display: flex;
-	align-items: center;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-between;
 }
 footer{
@@ -397,7 +394,7 @@ footer a:hover{
 		font-size: 15px;
 	}
 	.card__image{
-		width: 28%;
+		width: 100px;
 	}
 	.add-in-cart{
 		width: 100px;
@@ -412,6 +409,14 @@ footer a:hover{
 	}
 	.book__title{
 		padding: 5px 20px;
+	}
+	footer{
+		flex-direction: column;
+		align-items: center;
+	}
+	footer>*{
+		padding: 5px;
+		font-size: 14px;
 	}
 }
 @media only screen and (max-width: 425px){
@@ -431,10 +436,6 @@ footer a:hover{
 	.card{
 		font-size: 12px;
 		width: 100%;
-		justify-content: space-between;
-	}
-	.card__image{
-		width: 150px;
 	}
 	.title{
 		font-size: 20px;
@@ -444,7 +445,7 @@ footer a:hover{
 		width: 230px;
 	}
 	.sort__by{
-		padding: 0;
+		padding: 0 0 0 15px;
 	}
 	.main__wrapper .title__block{
 		padding: 0;
