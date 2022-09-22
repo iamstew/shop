@@ -10,9 +10,9 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 	<title>Магазин книг</title>
 </head>
-<body itemscope itemtype="http://schema.org/Organization">
+<body>
 	<header>
-		<div class="header-left">
+		<div class="header-left" itemscope itemtype="http://schema.org/Organization">
 			<a class="header-left__logo" href="#" itemprop="name"><h1>Магазин книг</h1>
 			</a>
 		</div>
@@ -26,7 +26,7 @@
 		</div>
 		<div class="header-right">
 			<a class="shopping-bag" title="Корзина" onclick="cartToggle()">
-				<span class="items-in-cart">4</span>
+				<span class="items-in-cart"></span>
 				<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24">
 					<path fill="#fff" d="M16 6v-2c0-2.209-1.791-4-4-4s-4 1.791-4 4v2h-5v18h18v-18h-5zm-7-2c0-1.654 1.346-3 3-3s3 1.346 3 3v2h-6v-2zm10 18h-14v-14h3v1.5c0 .276.224.5.5.5s.5-.224.5-.5v-1.5h6v1.5c0 .276.224.5.5.5s.5-.224.5-.5v-1.5h3v14z"/>
 				</svg>
@@ -39,7 +39,7 @@
 				<path fill="#fff" d="M23.245 20l-11.245-14.374-11.219 14.374-.781-.619 12-15.381 12 15.391-.755.609z"/>
 			</svg>
 		</a>
-		<div class="cart">
+		<section class="cart">
 			<div class="cart__header">
 				<div class="title__block">
 					<h2 class="title">Корзина</h2>
@@ -55,9 +55,9 @@
 				<h3 class="all__cost">Итого: <span data-cost></span> <i>руб.</i></h3>
 				<button class="buy__books">Купить</button>
 			</div>
-		</div>
+		</section>
 		<div class="library__image"></div>
-		<div class="main__wrapper">
+		<section class="main__wrapper">
 			<div class="title__block">
 				<h2 class="title">Каталог</h2>
 				<div class="filters">
@@ -72,7 +72,7 @@
 				</div>
 			</div>
 			<div class="content">
-				<div class="card">
+				<div class="card" itemscope itemtype="http://schema.org/Organization">
 					<div class="card__image">
 						<img data-id="1"
 								class="card__book" 
@@ -95,7 +95,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card">
+				<div class="card" itemscope itemtype="http://schema.org/Organization">
 					<div class="card__image">
 						<img data-id="2"
 								class="card__book"
@@ -118,7 +118,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card">
+				<div class="card" itemscope itemtype="http://schema.org/Organization">
 					<div class="card__image">
 						<img data-id="3"
 								class="card__book" 
@@ -141,7 +141,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card">
+				<div class="card" itemscope itemtype="http://schema.org/Organization">
 					<div class="card__image">
 						<img data-id="4"
 								class="card__book" 
@@ -165,7 +165,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	</main>
 	<footer>
 		<span itemprop="adress">Улица Есенина, дом 47</span>
